@@ -44,4 +44,11 @@ public class Category {
 	// 해당 카테고리의 자식들
 	@OneToMany(mappedBy = "parent")
 	private List<Category> child = new ArrayList<>();
+	
+	// == 연관 관계 메서드 == // 양방향 연관 관계
+	// child 가 N개
+	public void addChildCategory(Category child) {
+		this.child.add(child);
+		child.setParent(this);
+	}
 }

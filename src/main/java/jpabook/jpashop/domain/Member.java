@@ -31,6 +31,6 @@ public class Member {
 	// 관계 매핑
 	// 회원 한명은 주문과 1대 다 관계
 	@OneToMany(mappedBy="member") // 매핑을 당하는 것 (연관관계 주인이 아니면 이렇게 해줘야한다.)
-	private List<Order> order = new ArrayList<>();
+	private List<Order> orders = new ArrayList<>();
 	
 }
