@@ -12,10 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.repository.MemberRepository;
+import lombok.extern.slf4j.Slf4j;
 
 @RunWith(SpringRunner.class) // junit 실행시 스프링과 같이 실행하기 위해서
 @SpringBootTest // 스프링부트를 띄운 상태로 테스트 실행하기 위해서(@Autowired 등)
 @Transactional
+@Slf4j
 public class MemberServiceTest {
 	
 	@Autowired MemberService memberService;

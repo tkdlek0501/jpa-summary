@@ -20,7 +20,7 @@ import lombok.Setter;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE) // 테이블 전략: single_table; 하나의 테이블에 모든 컬럼 관리
 @DiscriminatorColumn(name="dtype") // 위 전략을 사용하기 위한 컬럼 지정
-@Getter
+@Getter @Setter
 public abstract class Item { // 추상 클래스 ; 타입에 따라 받아올 data가 다르기 때문 (상품의 종류가 여러개라서: book, album, movie)
 		
 	@Id @GeneratedValue
