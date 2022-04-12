@@ -13,6 +13,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 // 실무에서는 Getter는 열어놓되, Setter는 열어놓으면 어디서 변경됐는지 알기 어려워 비즈니스 메서드로 대신하는 게 좋다
+// Getter 도 사용 안하는 게 좋다. getter에 의존할수록 객체는 독립적이지 못하게 된다(외부에서 변경하는데 사용될 수도 있다)
 
 @Entity
 @Getter @Setter
