@@ -28,6 +28,7 @@ public class OrderServiceTest {
 	@Autowired EntityManager em;
 	@Autowired OrderService orderService;
 	@Autowired OrderRepository orderRepository;
+	@Autowired Book book;
 	
 	@Test
 	public void order() throws Exception {
@@ -87,12 +88,11 @@ public class OrderServiceTest {
 	}
 	
 	private Book createBook(String name, int price, int stockQuantity) {
-		Book book = new Book();
-		book.setName(name);
-		book.setPrice(price);
-		book.setStockQuantity(stockQuantity);
-		em.persist(book);
-		return book;
+		
+		Book createdBook = book.createBook(null, name, price, stockQuantity, null, null);
+		
+		em.persist(createdBook);
+		return createdBook;
 	}
 
 	private Member createMember() {
