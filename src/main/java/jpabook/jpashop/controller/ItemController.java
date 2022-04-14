@@ -61,7 +61,6 @@ public class ItemController {
 		return "item/itemList";
 	}
 	
-	// TODO: JPA에서의 수정은 병합이 아닌 변경감지를 지향 
 	// 상품 수정 폼
 	@GetMapping("items/{itemId}/edit")
 	public String updateItemForm(@PathVariable("itemId") Long itemId, Model model) {
@@ -80,6 +79,7 @@ public class ItemController {
 		return "item/updateItemForm";
 	}
 	
+	// TODO: JPA에서의 수정은 병합이 아닌 변경감지를 지향 
 	// 상품 수정
 	@PostMapping("items/{itemId}/edit")
 	public String updateItem(@ModelAttribute("form") BookForm form) {
