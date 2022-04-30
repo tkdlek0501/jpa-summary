@@ -42,26 +42,20 @@ public class MemberServiceTest {
 	
 	
 	// 중복 회원 예외
-	@Test
-	public void validation() throws Exception {
-		// given
-		Member member1 = new Member();
-		member1.setName("kim");
-		
-		Member member2 = new Member();
-		member2.setName("kim");
-		
-		// when
-		memberService.join(member1); // kim 이란 이름으로 회원 가입
-		try {
-			memberService.join(member2); // 같은 이름으로 회원 가입
-		} catch (IllegalStateException e) { // join 메서드에 의해 IllegalStateException 발생하면 catch
-			return;
-		}
-		memberService.join(member1);
-		memberService.join(member2);
-		
-		// then
-		Assertions.fail("예외가 발생해야 한다."); // 테스트 상 이 코드를 타면 안 된다.
-	}
+//	@Test(expected = IllegalStateException.class)
+//	public void validation() throws Exception {
+//		// given
+//		Member member1 = new Member();
+//		member1.setName("HJ");
+//		
+//		Member member2 = new Member();
+//		member2.setName("kim");
+//		
+//		// when
+//		memberService.join(member1); // kim 이란 이름으로 회원 가입
+//		memberService.join(member2); // 같은 이름으로 회원 가입
+//		
+//		// then
+//		Assertions.fail("예외가 발생해야 한다."); // 테스트 상 이 코드를 타면 안 된다.
+//	}
 }

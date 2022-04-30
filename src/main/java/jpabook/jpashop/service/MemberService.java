@@ -28,6 +28,7 @@ public class MemberService {
 	}
 	
 	// 중복 회원 검증 (같은 이름이 있는지)
+	@Transactional
 	private void validateDuplicateMember(Member member) {
 		//EXCEPTION
 		List<Member> findMembers = memberRepository.findByName(member.getName()); // 이것보다는 count를 해서 0이 아니면 예외 발생 시키는게 좋다
