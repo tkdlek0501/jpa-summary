@@ -8,8 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
 
-import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -23,6 +23,7 @@ public class Member {
 	@Id @GeneratedValue
 	private Long id;
 	
+	@NotEmpty
 	private String name;
 	
 	// 회원은 주소 정보를 포함
