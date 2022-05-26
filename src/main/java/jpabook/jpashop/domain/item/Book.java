@@ -13,7 +13,7 @@ import lombok.Setter;
 @Entity
 @DiscriminatorValue("B") // @DiscriminatorColumn에 들어갈 구분명
 @Getter @Setter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+//@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Book extends Item{
 	
 	private String author;
