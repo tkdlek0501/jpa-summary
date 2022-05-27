@@ -10,6 +10,7 @@ import org.springframework.util.StringUtils;
 
 import jpabook.jpashop.domain.Order;
 import jpabook.jpashop.dto.OrderSearch;
+import jpabook.jpashop.dto.OrderSimpleQueryDto;
 import lombok.RequiredArgsConstructor;
 
 @Repository
@@ -66,6 +67,17 @@ public class OrderRepository {
 		}
 				
 		return query.getResultList();
+	}
+	
+	// TODO: fetch join 사용
+	// fetch join은 객체를 기준으로 join을 해오는 것, 즉 order 테이블을 조회하는 개념이 아니라 Order 객체를 조회하는 개념
+	// inner join이 기본
+	public List<Order> findAllWithMemberDelivery() {
+		return em.createQuery(
+					"SELECT o FROM Order o" +
+					" LEFT JOIN FETCH o.member m" +
+					" LEFT JOIN FETCH o.delivery d", Order.class
+				).getResultList();
 	}
 	
 	// TODO: 동적 쿼리 예시 (Querydsl 라이브러리 이용)

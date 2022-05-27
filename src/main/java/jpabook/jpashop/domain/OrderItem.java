@@ -8,6 +8,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jpabook.jpashop.domain.item.Item;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -27,7 +29,7 @@ public class OrderItem {
 	@JoinColumn(name = "item_id")
 	private Item item;
 	
-	
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY) // N : 1 관계
 	@JoinColumn(name = "order_id") // N 쪽에 FK 가 있으므로 연관관계의 주인
 	private Order order;
