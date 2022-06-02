@@ -86,7 +86,10 @@ public class OrderQueryRepository {
 				"SELECT new jpabook.jpashop.repository.order.query.OrderQueryDto(o.id, m.name, o.orderDate, o.status, d.address) FROM Order o" +
 				" JOIN o.member m" + 
 				" JOIN o.delivery d", OrderQueryDto.class
-				).getResultList();
+				)
+				.setFirstResult(1)
+				.getResultList();
+		
 	}
 
 	
