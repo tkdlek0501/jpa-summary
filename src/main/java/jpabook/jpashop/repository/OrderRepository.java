@@ -69,7 +69,6 @@ public class OrderRepository {
 		return query.getResultList();
 	}
 	
-	// TODO: fetch join 사용
 	// fetch join은 객체를 기준으로 join을 해오는 것, 즉 order 테이블을 조회하는 개념이 아니라 Order 객체를 조회하는 개념
 	// inner join이 기본
 	public List<Order> findAllWithMemberDelivery() {
@@ -98,7 +97,8 @@ public class OrderRepository {
 	// + fetch join 하므로 엔티티를 기준으로 끌고오는데, fetch join에 걸려있지 않으면 fetch type을 따라 뒤에 쿼리가 날아감(N + 1)
 	// + 즉시로딩은 지연로딩과 다르게 전체를 join해서 한방에 가져오지만 어떤 join인지를 예상하기 힘들고 모든 연관된 엔티티를 join하기 때문에 사용을 지양하는 것
 	
-	// 페이징 사용
+	// TODO: *1:N 컬렉션 조회시 fetch join 이용 최적 방법; fetch size(in 쿼리내 개수) 이용
+	// 페이징 사용 가능
 	public List<Order> findAllPaging(int offset, int limit) {
 		return em.createQuery(
 				"SELECT o FROM Order o" +

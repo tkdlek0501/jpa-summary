@@ -14,6 +14,8 @@ import jpabook.jpashop.domain.OrderItem;
 import jpabook.jpashop.domain.OrderStatus;
 import jpabook.jpashop.dto.OrderSearch;
 import jpabook.jpashop.repository.OrderRepository;
+import jpabook.jpashop.repository.order.query.OrderFlatDto;
+import jpabook.jpashop.repository.order.query.OrderItemQueryDto;
 import jpabook.jpashop.repository.order.query.OrderQueryDto;
 import jpabook.jpashop.repository.order.query.OrderQueryRepository;
 import lombok.Data;
@@ -73,11 +75,34 @@ public class OrderApiController {
 			return collect;
 	}
 	
+///////////////// 여기서부터는 DTO로 바로 조회하는 방법	
+	
 	// 컬렉션 DTO로 바로 조회
 	@GetMapping("/api/v4/orders")
 	public List<OrderQueryDto> ordersV4(){
 		return orderQueryRepository.findOrderQueryDtos();
 	}
+	
+	@GetMapping("/api/v5/orders")
+	public List<OrderQueryDto> ordersV5(){
+		return orderQueryRepository.findAllByDto_optimization();
+	}
+	
+	// 플랫하게 조회했으므로 API 스펙에 맞게 변환
+	// 쿼리 1번 이라는 장점이 있지만,
+	// 애플리케이션 추가 작업이 크다
+	// 페이징 불가능
+//	@GetMapping("/api/v6/orders")
+//	public List<OrderFlatDto> ordersV6(){
+//		List<OrderFlatDto> flats = orderQueryRepository.findAllByDto_flat();
+//		
+//		return flats.stream()
+//				.collect(groupingBy(o -> new OrderQueryDto(o.getOrderId(). o.getName(), o.getOrderDate(), o.getOrderStatus(), o.getAddress()),
+//						mapping(o -> new OrderItemQueryDto(o.getOrderId(). o.getItemName(), o.getOrderPrice(), o.getCount(), toList()))
+//				)).entrySet().stream()
+//				.map(e -> new OrderQueryDto(e.getKey().getOrderId(), e.getKey().getName(), e.getKey().getOrderDate(), e.getKey().getAddress(), e.getValue()))
+//				.collect(toList());
+//	}
 	
 	@Data
 	static class OrderDto {
