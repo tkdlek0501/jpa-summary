@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import jpabook.jpashop.domain.Member;
-import jpabook.jpashop.repository.MemberRepository;
+import jpabook.jpashop.repository.MemberRepositoryOld;
 import lombok.RequiredArgsConstructor;
 
 @Service
@@ -15,7 +15,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class MemberService {
 	
-	private final MemberRepository memberRepository;
+	private final MemberRepositoryOld memberRepository;
 	
 	// 회원 가입; 저장 후 id 반환
 	@Transactional // class 레벨에서 설정한 transactional 과 다르게 설정하고 싶으면 메서드 레벨에서 설정하면 된다.

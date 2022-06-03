@@ -37,7 +37,7 @@ public class MemberServiceTest {
 		
 		// then
 		em.flush(); // insert 쿼리를 보기 위해서 추가(쿼리 동작을 강제로); 원래는 @Transactional에 의해 test는 롤백됨 애초에 insert 쿼리가 DB로 나가지 않음
-		Assertions.assertEquals(member, memberRepository.findOne(savedId));
+		Assertions.assertEquals(member, memberRepository.findById(savedId));
 	}
 	
 	
